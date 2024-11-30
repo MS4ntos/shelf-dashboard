@@ -8,9 +8,21 @@ const shelves = [
     { id: 6, name: "Prateleira F1", capacity: 100, usedSpace: 88 }
 ];
 
+// Função para determinar a cor da barra de progresso
+function getProgressBarColor(usagePercentage) {
+    if (usagePercentage >= 0 && usagePercentage <= 30) {
+        return 'bg-red-500';  // Vermelho para 0-30%
+    } else if (usagePercentage > 30 && usagePercentage <= 60) {
+        return 'bg-yellow-500';  // Amarelo para 31-60%
+    } else {
+        return 'bg-green-500';  // Verde para 61-100%
+    }
+}
+
 // Função para criar um card de prateleira
 function createShelfCard(shelf) {
     const usagePercentage = (shelf.usedSpace / shelf.capacity) * 100;
+    const progressBarColor = getProgressBarColor(usagePercentage);
     
     const card = document.createElement('div');
     card.className = 'shelf-card';
@@ -31,7 +43,7 @@ function createShelfCard(shelf) {
                 </div>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill ${usagePercentage > 90 ? 'warning' : ''}" 
+                <div class="progress-fill ${progressBarColor}" 
                      style="width: ${usagePercentage}%">
                 </div>
             </div>

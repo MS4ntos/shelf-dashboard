@@ -11,11 +11,11 @@ const shelves = [
 // Função para determinar a cor da barra de progresso
 function getProgressBarColor(usagePercentage) {
     if (usagePercentage >= 0 && usagePercentage <= 30) {
-        return 'bg-red-500';  // Vermelho para 0-30%
+        return 'red';  // Vermelho para 0-30%
     } else if (usagePercentage > 30 && usagePercentage <= 60) {
-        return 'bg-yellow-500';  // Amarelo para 31-60%
+        return 'yellow';  // Amarelo para 31-60%
     } else {
-        return 'bg-green-500';  // Verde para 61-100%
+        return 'green';  // Verde para 61-100%
     }
 }
 
@@ -43,8 +43,8 @@ function createShelfCard(shelf) {
                 </div>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill ${progressBarColor}" 
-                     style="width: ${usagePercentage}%">
+                <div class="progress-fill" 
+                     style="width: ${usagePercentage}%; background-color: ${progressBarColor}">
                 </div>
             </div>
             <div class="usage-text">
